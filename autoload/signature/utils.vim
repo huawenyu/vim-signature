@@ -1,6 +1,3 @@
-" vim: fdm=marker:et:ts=4:sw=2:sts=2
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 function! signature#utils#Set(var, value, ...)                                                                    " {{{1
   " Description: Assign value to var if var is unset or if an optional 3rd arg is provided to force
 
@@ -174,12 +171,14 @@ endfunction
 
 
 function! signature#utils#IsValidMark(mark)                                                                       " {{{1
-  return (b:SignatureIncludeMarks =~# a:mark)
+  return (exists('b:SignatureIncludeMarks') && (b:SignatureIncludeMarks =~# a:mark))
 endfunction
 
 
 function! signature#utils#IsValidMarker(marker)                                                                   " {{{1
-  return (  (b:SignatureIncludeMarkers =~# a:marker)
+  return (exists('b:SignatureIncludeMarkers') && (b:SignatureIncludeMarkers =~# a:marker)
          \ && (a:marker != ' ')
          \ )
 endfunction
+
+" vim: fdm=marker:et:ts=4:sw=2:sts=2
